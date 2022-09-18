@@ -31,10 +31,11 @@ public class LoginPage {
 	// driver
 	public LoginPage(WebDriver basedriver) {
 		this.driver = basedriver;
-		PageFactory.initElements(basedriver, this); //pagefactory is a class -  initializes all page elements. FindBy doesn't work if this is not added
+		PageFactory.initElements(basedriver, this); // pagefactory is a class - initializes all page elements. FindBy
+													// doesn't work if this is not added
 	}
 
-	//page object model is a design pattern
+	// page object model is a design pattern
 	// *********************Methods*************************
 
 	public void Login(String UsernameVal, String PwVal) {
