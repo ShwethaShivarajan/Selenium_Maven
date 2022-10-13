@@ -1,4 +1,4 @@
-package testcases;
+	package testcases;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
 public class BaseClass {
-	WebDriver driver;
+	public static WebDriver driver;
 	XSSFWorkbook wbook;
 	XSSFSheet sheet;
 	
@@ -41,8 +41,9 @@ public class BaseClass {
 	public void DataClean() throws IOException {
 
 		wbook.close();
-		report.close();
 		report.flush();
+		report.close();
+		
 	}
 
 	@BeforeMethod

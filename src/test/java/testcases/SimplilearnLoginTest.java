@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -14,10 +15,12 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import pages.LoginPage;
 
+@Listeners(ListenerExample.class)
+
 public class SimplilearnLoginTest extends BaseClass {
 
 	@Test
-	@Parameters({ "uname", "pwd" })
+	@Parameters({"uname", "pwd"})
 	public void Test1(String UserName, String Password) {
 
 		test.log(LogStatus.INFO, "Test 1 started");
@@ -30,7 +33,7 @@ public class SimplilearnLoginTest extends BaseClass {
 		WebElement Error = driver.findElement(By.id("msg_box"));
 
 		String ActError = Error.getText();
-		String ExpError = "The email or password you have entered is invalid.";
+		String ExpError = "The email or password you have entered is invalid";
 
 		Assert.assertEquals(ActError, ExpError);
 		Assert.assertTrue(Error.isDisplayed());
@@ -57,6 +60,12 @@ public class SimplilearnLoginTest extends BaseClass {
 
 		LoginPage lp = new LoginPage(driver);
 		lp.Login(UserName, Password);
+		
+		WebElement Error = driver.findElement(By.id("msg_box"));
+		String ActError = Error.getText();
+		String ExpError = "The email or password you have entered is invalid";
+		Assert.assertEquals(ActError, ExpError);
+		Assert.assertTrue(Error.isDisplayed());
 
 	}
 }
